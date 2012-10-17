@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Scrabble&reg; Helper</title>
+		<link rel="stylesheet" href="style.css" />
+		<script src="script.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<h2>Aide à compter au Scrabble&reg;</h2>
+		</header>
+
+	<nav ondragover="return false" ondrop="drop(this, event)">		
+			<div class="tile" id="A1" ondragstart="drag(this, event)" draggable="true">A</div>
+			<div class="tile" id="A2" ondragstart="drag(this, event)" draggable="true">A</div>
+			<div class="tile" id="A3" ondragstart="drag(this, event)" draggable="true">A</div>
+			<div class="tile" id="A4" ondragstart="drag(this, event)" draggable="true">A</div>
+			<div class="tile" id="A5" ondragstart="drag(this, event)" draggable="true">A</div>
+			<div class="tile" id="A6" ondragstart="drag(this, event)" draggable="true">A</div>
+			<div class="tile" id="A7" ondragstart="drag(this, event)" draggable="true">A</div>
+			<div class="tile" id="A8" ondragstart="drag(this, event)" draggable="true">A</div>
+			<div class="tile" id="A9" ondragstart="drag(this, event)" draggable="true">A</div>
+			<div class="tile" id="B1" ondragstart="drag(this, event)" draggable="true">B</div>
+			<div class="tile" id="B2" ondragstart="drag(this, event)" draggable="true">B</div>
+			<div class="tile" id="C1" ondragstart="drag(this, event)" draggable="true">C</div>
+			<div class="tile" id="C2" ondragstart="drag(this, event)" draggable="true">C</div>
+			<div class="tile" id="D1" ondragstart="drag(this, event)" draggable="true">D</div>
+			<div class="tile" id="D2" ondragstart="drag(this, event)" draggable="true">D</div>
+			<div class="tile" id="D3" ondragstart="drag(this, event)" draggable="true">D</div>
+			<div class="tile" id="E1" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E2" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E3" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E4" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E5" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E6" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E7" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E8" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E9" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E10" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E11" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E12" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E13" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E14" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="E15" ondragstart="drag(this, event)" draggable="true">E</div>
+			<div class="tile" id="F1" ondragstart="drag(this, event)" draggable="true">F</div>
+			<div class="tile" id="F2" ondragstart="drag(this, event)" draggable="true">F</div>
+			<div class="tile" id="G1" ondragstart="drag(this, event)" draggable="true">G</div>
+			<div class="tile" id="G2" ondragstart="drag(this, event)" draggable="true">G</div>
+			<div class="tile" id="H1" ondragstart="drag(this, event)" draggable="true">H</div>
+			<div class="tile" id="H2" ondragstart="drag(this, event)" draggable="true">H</div>
+			<div class="tile" id="I1" ondragstart="drag(this, event)" draggable="true">I</div>
+			<div class="tile" id="I2" ondragstart="drag(this, event)" draggable="true">I</div>
+			<div class="tile" id="I3" ondragstart="drag(this, event)" draggable="true">I</div>
+			<div class="tile" id="I4" ondragstart="drag(this, event)" draggable="true">I</div>
+			<div class="tile" id="I5" ondragstart="drag(this, event)" draggable="true">I</div>
+			<div class="tile" id="I6" ondragstart="drag(this, event)" draggable="true">I</div>
+			<div class="tile" id="I7" ondragstart="drag(this, event)" draggable="true">I</div>
+			<div class="tile" id="I8" ondragstart="drag(this, event)" draggable="true">I</div>
+			<div class="tile" id="J1" ondragstart="drag(this, event)" draggable="true">J</div>
+			<div class="tile" id="K1" ondragstart="drag(this, event)" draggable="true">K</div>
+			<div class="tile" id="L1" ondragstart="drag(this, event)" draggable="true">L</div>
+			<div class="tile" id="L2" ondragstart="drag(this, event)" draggable="true">L</div>
+			<div class="tile" id="L3" ondragstart="drag(this, event)" draggable="true">L</div>
+			<div class="tile" id="L4" ondragstart="drag(this, event)" draggable="true">L</div>
+			<div class="tile" id="L5" ondragstart="drag(this, event)" draggable="true">L</div>
+			<div class="tile" id="M1" ondragstart="drag(this, event)" draggable="true">M</div>
+			<div class="tile" id="M2" ondragstart="drag(this, event)" draggable="true">M</div>
+			<div class="tile" id="M3" ondragstart="drag(this, event)" draggable="true">M</div>
+			<div class="tile" id="N1" ondragstart="drag(this, event)" draggable="true">N</div>
+			<div class="tile" id="N2" ondragstart="drag(this, event)" draggable="true">N</div>
+			<div class="tile" id="N3" ondragstart="drag(this, event)" draggable="true">N</div>
+			<div class="tile" id="N4" ondragstart="drag(this, event)" draggable="true">N</div>
+			<div class="tile" id="N5" ondragstart="drag(this, event)" draggable="true">N</div>
+			<div class="tile" id="N6" ondragstart="drag(this, event)" draggable="true">N</div>
+			<div class="tile" id="O1" ondragstart="drag(this, event)" draggable="true">O</div>
+			<div class="tile" id="O2" ondragstart="drag(this, event)" draggable="true">O</div>
+			<div class="tile" id="O3" ondragstart="drag(this, event)" draggable="true">O</div>
+			<div class="tile" id="O4" ondragstart="drag(this, event)" draggable="true">O</div>
+			<div class="tile" id="O5" ondragstart="drag(this, event)" draggable="true">O</div>
+			<div class="tile" id="O6" ondragstart="drag(this, event)" draggable="true">O</div>
+			<div class="tile" id="P1" ondragstart="drag(this, event)" draggable="true">P</div>
+			<div class="tile" id="P2" ondragstart="drag(this, event)" draggable="true">P</div>
+			<div class="tile" id="Q1" ondragstart="drag(this, event)" draggable="true">Q</div>
+			<div class="tile" id="R1" ondragstart="drag(this, event)" draggable="true">R</div>
+			<div class="tile" id="R2" ondragstart="drag(this, event)" draggable="true">R</div>
+			<div class="tile" id="R3" ondragstart="drag(this, event)" draggable="true">R</div>
+			<div class="tile" id="R4" ondragstart="drag(this, event)" draggable="true">R</div>
+			<div class="tile" id="R5" ondragstart="drag(this, event)" draggable="true">R</div>
+			<div class="tile" id="R6" ondragstart="drag(this, event)" draggable="true">R</div>
+			<div class="tile" id="S1" ondragstart="drag(this, event)" draggable="true">S</div>
+			<div class="tile" id="S2" ondragstart="drag(this, event)" draggable="true">S</div>
+			<div class="tile" id="S3" ondragstart="drag(this, event)" draggable="true">S</div>
+			<div class="tile" id="S4" ondragstart="drag(this, event)" draggable="true">S</div>
+			<div class="tile" id="S5" ondragstart="drag(this, event)" draggable="true">S</div>
+			<div class="tile" id="S6" ondragstart="drag(this, event)" draggable="true">S</div>
+			<div class="tile" id="T1" ondragstart="drag(this, event)" draggable="true">T</div>
+			<div class="tile" id="T2" ondragstart="drag(this, event)" draggable="true">T</div>
+			<div class="tile" id="T3" ondragstart="drag(this, event)" draggable="true">T</div>
+			<div class="tile" id="T4" ondragstart="drag(this, event)" draggable="true">T</div>
+			<div class="tile" id="T5" ondragstart="drag(this, event)" draggable="true">T</div>
+			<div class="tile" id="T6" ondragstart="drag(this, event)" draggable="true">T</div>
+			<div class="tile" id="U1" ondragstart="drag(this, event)" draggable="true">U</div>
+			<div class="tile" id="U2" ondragstart="drag(this, event)" draggable="true">U</div>
+			<div class="tile" id="U3" ondragstart="drag(this, event)" draggable="true">U</div>
+			<div class="tile" id="U4" ondragstart="drag(this, event)" draggable="true">U</div>
+			<div class="tile" id="U5" ondragstart="drag(this, event)" draggable="true">U</div>
+			<div class="tile" id="U6" ondragstart="drag(this, event)" draggable="true">U</div>
+			<div class="tile" id="V1" ondragstart="drag(this, event)" draggable="true">V</div>
+			<div class="tile" id="V2" ondragstart="drag(this, event)" draggable="true">V</div>
+			<div class="tile" id="W1" ondragstart="drag(this, event)" draggable="true">W</div>
+			<div class="tile" id="X1" ondragstart="drag(this, event)" draggable="true">X</div>
+			<div class="tile" id="Y1" ondragstart="drag(this, event)" draggable="true">Y</div>
+			<div class="tile" id="Z1" ondragstart="drag(this, event)" draggable="true">Z</div>
+			<div class="tile" id="#1" ondragstart="drag(this, event)" draggable="true"> </div>
+			<div class="tile" id="#2" ondragstart="drag(this, event)" draggable="true"> </div>				
+		</nav>
+		<section id="page-body">
+			<div class="red-pane" id="coord-0-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-0-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-0-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-0-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-0-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-0-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-0-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="red-pane" id="coord-0-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-0-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-0-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-0-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-0-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-0-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-0-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="red-pane" id="coord-0-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-1-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-1-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-1-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-1-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-1-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="blue-pane" id="coord-1-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-1-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-1-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-1-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="blue-pane" id="coord-1-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-1-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-1-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-1-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-1-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-1-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-2-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-2-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-2-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-2-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-2-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-2-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-2-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-2-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-2-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-2-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-2-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-2-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-2-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-2-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-2-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-3-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-3-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-3-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-3-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-3-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-3-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-3-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-3-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-3-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-3-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-3-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-3-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-3-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-3-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-3-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-4-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-4-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-4-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-5-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="blue-pane" id="coord-5-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-5-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-5-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-5-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="blue-pane" id="coord-5-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-5-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-5-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-5-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="blue-pane" id="coord-5-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-5-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-5-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-5-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="blue-pane" id="coord-5-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-5-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-6-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-6-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-6-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-6-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-6-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-6-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-6-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-6-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-6-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-6-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-6-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-6-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-6-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-6-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-6-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="red-pane" id="coord-7-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-7-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-7-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-7-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-7-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-7-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-7-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-7-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-7-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-7-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-7-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-7-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-7-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-7-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="red-pane" id="coord-7-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-8-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-8-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-8-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-8-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-8-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-8-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-8-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-8-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-8-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-8-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-8-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-8-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-8-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-8-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-8-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-9-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="blue-pane" id="coord-9-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-9-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-9-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-9-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="blue-pane" id="coord-9-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-9-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-9-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-9-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="blue-pane" id="coord-9-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-9-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-9-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-9-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="blue-pane" id="coord-9-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-9-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-10-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-10-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-10-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-11-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-11-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-11-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-11-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-11-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-11-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-11-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-11-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-11-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-11-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-11-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-11-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-11-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-11-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-11-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-12-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-12-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-12-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-12-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-12-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-12-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-12-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-12-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-12-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-12-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-12-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-12-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-12-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-12-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-12-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-13-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-13-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-13-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-13-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-13-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="blue-pane" id="coord-13-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-13-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-13-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-13-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="blue-pane" id="coord-13-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-13-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-13-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-13-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="pink-pane" id="coord-13-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-13-14" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="red-pane" id="coord-14-0" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-14-1" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-14-2" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-14-3" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-14-4" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-14-5" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-14-6" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="red-pane" id="coord-14-7" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-14-8" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-14-9" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-14-10" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="cyan-pane" id="coord-14-11" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-14-12" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="green-pane" id="coord-14-13" ondragover="return false" ondrop="drop(this, event)"></div>
+			<div class="red-pane" id="coord-14-14" ondragover="return false" ondrop="drop(this, event)"></div>
+		</section>
+		<div id="side">
+			<input type="submit" Value="Fin du tour" onClick="compute()"><br>
+			<p><strong>Informations</strong></p>
+			<div id="onGoing"></div>
+			</div>		
+	<footer>
+		Made by Thomas Bonset (view <a href="script.coffee">sources</a> in <a href="http://coffeescript.org">CoffeeScript</a>) - Published under <a href="http://people.freebsd.org/~phk/">Beerware</a> license
+	</footer>
+	</body>
+</html>
