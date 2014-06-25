@@ -7,11 +7,11 @@
 #  can do whatever you want with it. 
 # ---------------------------------------------------------------------------
 
-# Table containing last letters placed. Will contain 'letterinTheMatrix' objects
+# Table containing last letters placed. Will contain 'LetterinTheMatrix' objects
 @newLetters=[]
 
 # Class representing a Scrabble tile and its place on the board 
-class letterinTheMatrix
+class LetterinTheMatrix
 	constructor: (@value, @i, @j) ->
 	equals: (letter) ->
 		return (letter.value == @value and letter.i == @i and letter.j == @j)
@@ -86,11 +86,11 @@ copyMatrix = (matrixFrom, matrixTo) ->
 			jokerTile = document.querySelector("#coord-#{i}-#{j} > div > input")
 			if letterTile != null 
 				if  matrixTemp[i][j] is -1
-					newLetters.push new letterinTheMatrix(letterTile.innerHTML, i, j)
+					newLetters.push new LetterinTheMatrix(letterTile.innerHTML, i, j)
 					matrixTemp[i][j] = letterTile.innerHTML
 			if jokerTile != null 
 				if  matrixTemp[i][j] is -1
-					newLetters.push new letterinTheMatrix(jokerTile.value, i, j)
+					newLetters.push new LetterinTheMatrix(jokerTile.value, i, j)
 					matrixJokerMask[i][j] = true
 					matrixTemp[i][j] = jokerTile.value	
 	onGoingContent = ""
@@ -180,7 +180,7 @@ getHorizontalWord = (letter) ->
 		cursor--
 	if matrixTemp[letter.i][cursor] == -1 then cursor++	
 	while matrixTemp[letter.i][cursor] != -1
-		result.push new letterinTheMatrix(matrixTemp[letter.i][cursor],letter.i,cursor)
+		result.push new LetterinTheMatrix(matrixTemp[letter.i][cursor],letter.i,cursor)
 		cursor++
 		if cursor == 15 then break
 	if result.length > 1
@@ -198,7 +198,7 @@ getVerticalWord = (letter) ->
 		cursor--
 	if matrixTemp[cursor][letter.j] == -1 then cursor++	
 	while matrixTemp[cursor][letter.j] != -1
-		result.push new letterinTheMatrix(matrixTemp[cursor][letter.j],cursor,letter.j)
+		result.push new LetterinTheMatrix(matrixTemp[cursor][letter.j],cursor,letter.j)
 		cursor++
 		if cursor == 15 then break
 	if result.length > 1
