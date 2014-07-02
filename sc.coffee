@@ -74,6 +74,31 @@ copyMatrix = (matrixFrom, matrixTo) ->
 		for j in[0..14]
 			matrixTo[i][j]=matrixFrom[i][j]
 		
+		
+### 
+checks if word exists and is allowed in french Scrabble
+###
+# All words are put in a mongolab database
+@checkValidity = (wordToCheck) ->
+	query = {
+		"first": wordToCheck.charAt(0),
+		"size": wordToCheck.length
+		}	
+	dburl = "https://api.mongolab.com/api/1/databases/scrabbledictionnary/collections/dico1?q=" + JSON.stringify(query) + "&apiKey=V9D6fvKO2yJET9xi2bqLb798CCDTNc8G"
+	req = new XMLHttpRequest()
+	req.open('GET', dburl, true)
+	req.send(null)	
+	req.addEventListener 'readystatechange', ->
+		if req.readyState is 4         
+			successResultCodes = [200, 304]
+			if req.status in successResultCodes	
+				result = JSON.parse(req.responseText)
+				if _.contains(result[0].words,wordToCheck)
+					return true
+			else
+				console.log 'Error loading data...'
+	return false
+	
 ### 
 	Function called from HTML button	
 ###	
@@ -97,7 +122,8 @@ copyMatrix = (matrixFrom, matrixTo) ->
 	switch detectIfNewWordIsHorizontalOrVertical() 
 		when "horizontal"
 			mainWord = getHorizontalWord(newLetters[0])
-		#	onGoingContent += "toto" + checkValidity(mainWord)
+		#	if not checkValidity(mainWord)
+		#		alert "toto"
 			onGoingContent += "Horizontal : #{countWord mainWord} <br>"
 			for letter in newLetters
 				smallWord = getVerticalWord(letter)
@@ -225,24 +251,6 @@ detectIfNewWordIsHorizontalOrVertical = () ->
 		return "vertical"
 	return "unknown"
 
-### 
-checks if word exists and is allowed in french Scrabble
-###
-# All words are put in another server, sorted by their two first letters
-checkValidity = (letters) ->
-	word=""
-	for letter in letters
-		word += letter.value
-	httpRequest = new XMLHttpRequest
-	firstTwoLetters = word.slice(0,2)
-	console.log('http://thomas.bonset.free.fr/'+ firstTwoLetters + '/' + word)
-	httpRequest.open('GET', 'http://thomas.bonset.free.fr/'+ firstTwoLetters + '/' + word, false)
-	httpRequest.send null
-	if httpRequest.status == 200
-		return true
-	else
-		return false
-	
 ### 
 Drag & drop functions. 
 ### 
