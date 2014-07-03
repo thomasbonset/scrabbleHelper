@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+		<meta charset="utf-8">
         <title>Scrabble&reg; Helper</title>
         <link rel="stylesheet" href="style.css" />
         <script src="http://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.6.2/coffee-script.min.js"></script>
@@ -11,7 +12,7 @@
 
     <body>
         <header>
-            <h2>Aide à compter au Scrabble&reg;</h2>
+            <h2>Aide Ã  compter au Scrabble&reg;</h2>
         </header>
 
     <nav ondragover="return false" ondrop="drop(this, event)">      
@@ -115,8 +116,8 @@
             <div class="tile" id="X1" ondragstart="drag(this, event)" draggable="true"><strong>X</strong><sub>10</sub></div>
             <div class="tile" id="Y1" ondragstart="drag(this, event)" draggable="true"><strong>Y</strong><sub>10</sub></div>
             <div class="tile" id="Z1" ondragstart="drag(this, event)" draggable="true"><strong>Z</strong><sub>10</sub></div>
-            <div class="tile" id="#1" ondragstart="drag(this, event)" draggable="true"><input type="text"></input></div>
-            <div class="tile" id="#2" ondragstart="drag(this, event)" draggable="true"><input type="text"></input></div>                
+            <div class="tile" id="#1" ondragstart="drag(this, event)" draggable="true"><input type="text"></div>
+            <div class="tile" id="#2" ondragstart="drag(this, event)" draggable="true"><input type="text"></div>                
         </nav>
         <section id="page-body">
             <div class="red-pane" id="coord-0-0" ondragover="return false" ondrop="drop(this, event)"></div>
@@ -351,7 +352,7 @@
             <div id="onGoing"></div>  
         </div>      
     <footer>
-        Made by Thomas Bonset (view <a href="script.coffee">sources</a> in <a href="http://coffeescript.org">CoffeeScript</a>) - Published under <a href="http://people.freebsd.org/~phk/">Beerware</a> license
+        Made by Thomas Bonset (view <a href="/scrabble_helper/docs/sc.html">sources</a> in <a href="http://coffeescript.org">CoffeeScript</a>) - Published under WTFPL license
 <p> 
 <a href="http://www.w3.org/html/logo/">
 <img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-graphics-semantics-storage.png" width="261" height="64" alt="HTML5 Powered with CSS3 / Styling, Device Access, Graphics, 3D &amp; Effects, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Device Access, Graphics, 3D &amp; Effects, Semantics, and Offline &amp; Storage">
@@ -365,6 +366,7 @@
     </a>
 
 </p>
+
 
 </footer>
     </body>
