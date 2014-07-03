@@ -86,17 +86,14 @@ checks if word exists and is allowed in french Scrabble
 		}	
 	dburl = "https://api.mongolab.com/api/1/databases/scrabbledictionnary/collections/dico1?q=" + JSON.stringify(query) + "&apiKey=V9D6fvKO2yJET9xi2bqLb798CCDTNc8G"
 	req = new XMLHttpRequest()
-	req.open('GET', dburl, true)
+	req.open('GET', dburl, false)
 	req.send(null)	
-	req.addEventListener 'readystatechange', ->
-		if req.readyState is 4         
-			successResultCodes = [200, 304]
-			if req.status in successResultCodes	
-				result = JSON.parse(req.responseText)
-				if _.contains(result[0].words,wordToCheck)
-					return true
-			else
-				console.log 'Error loading data...'
+	if req.status is 200 or req.status is 304 
+		result = JSON.parse(req.responseText)
+		if _.contains(result[0].words,wordToCheck)
+			return true
+		else
+			console.log 'Error loading data...'
 	return false
 	
 ### 
@@ -122,37 +119,53 @@ checks if word exists and is allowed in french Scrabble
 	switch detectIfNewWordIsHorizontalOrVertical() 
 		when "horizontal"
 			mainWord = getHorizontalWord(newLetters[0])
-		#	if not checkValidity(mainWord)
-		#		alert "toto"
-			onGoingContent += "Horizontal : #{countWord mainWord} <br>"
-			for letter in newLetters
-				smallWord = getVerticalWord(letter)
-				if smallWord != null
-					onGoingContent += "Vertical : #{countWord smallWord} <br>"
-			copyMatrix(matrixTemp,matrix)		
+			if checkValidity(getWord mainWord)
+				onGoingContent += "Horizontal : #{countWord mainWord} <br>"
+				for letter in newLetters
+					smallWord = getVerticalWord(letter)
+					if smallWord != null and checkValidity(getWord mainWord)
+						onGoingContent += "Vertical : #{countWord smallWord} <br>"
+				copyMatrix(matrixTemp,matrix)		
 		when "vertical"
 			mainWord = getVerticalWord(newLetters[0])
-			onGoingContent += "Vertical : #{countWord mainWord} <br>"	
-			for letter in newLetters
-				if getHorizontalWord(letter) != null
+			if checkValidity(getWord mainWord)
+				onGoingContent += "Vertical : #{countWord mainWord} <br>"	
+				for letter in newLetters
 					smallWord = getHorizontalWord(letter)
-					onGoingContent += "Horizontal : #{countWord smallWord} <br>"	
-			copyMatrix(matrixTemp,matrix)
+					if smallWord != null and checkValidity(getWord smallWord)
+						onGoingContent += "Horizontal : #{countWord smallWord} <br>"	
+				copyMatrix(matrixTemp,matrix)
 		when "onlyOneLetter"
 			hWord = getHorizontalWord(newLetters[0])
 			vWord = getVerticalWord(newLetters[0])
 			if hWord == null and vWord == null
 				onGoingContent = "This tile is alone !!!"	
 			else
-				if hWord != null
+				if hWord != null and checkValidity(getWord hWord)
 					onGoingContent += "Horizontal : #{countWord hWord} <br>"
-				if vWord != null
+				if vWord != null and checkValidity(getWord vWord)
 					onGoingContent += "Vertical : #{countWord vWord} <br>"	
 				copyMatrix(matrixTemp,matrix)
 		when "unknown"
 			onGoingContent = "unknown, please replace your tiles"			
 	document.getElementById("onGoing").innerHTML=onGoingContent
+	freezeTilesOnMatrix()
 
+freezeTilesOnMatrix = () ->
+	for i in [0..14] # parse the board and detect new letters
+		for j in [0..14]
+			tile = document.querySelector("#coord-#{i}-#{j} > div")
+			console.log tile
+			if  tile != null	
+				tile.className="tile-fixed"
+				tile.removeAttribute("draggable");
+
+getWord = (listOfLetters) ->
+	result = ""
+	for letter in listOfLetters
+		result = result.concat(letter.value)
+	return result
+		
 ### 
 gets how much points the new word remains
 ###
