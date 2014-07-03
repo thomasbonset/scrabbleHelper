@@ -104,12 +104,12 @@ display: inline-block;
     width : 45px;
     border : 1px solid black;
     border-radius : 10px;
-    box-shadow : 2px 2px 1px 1px #666;
     float : left; 
 }
 
 .tile {
-    background-color : Khaki;    
+    background-color : Khaki;  
+    box-shadow : 2px 2px 1px 1px #666;  
 } 
 
 .tile-fixed {
