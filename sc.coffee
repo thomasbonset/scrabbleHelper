@@ -108,6 +108,7 @@ copyMatrix = (matrixFrom, matrixTo) ->
 					newLetters.push new LetterinTheMatrix(jokerTile.value, i, j)
 					matrixJokerMask[i][j] = true
 					matrixTemp[i][j] = jokerTile.value	
+	validateTurn = true
 	onGoingContent = ""
 	switch detectIfNewWordIsHorizontalOrVertical() 
 		when "horizontal"
@@ -116,33 +117,63 @@ copyMatrix = (matrixFrom, matrixTo) ->
 				onGoingContent += "Horizontal : #{countWord mainWord} <br>"
 				for letter in newLetters
 					smallWord = getVerticalWord(letter)
-					if smallWord != null and checkValidity(getWord mainWord)
-						onGoingContent += "Vertical : #{countWord smallWord} <br>"
-				copyMatrix(matrixTemp,matrix)		
+					if smallWord != null
+						if checkValidity(getWord mainWord)
+							onGoingContent += "Vertical : #{countWord smallWord} <br>"
+						else
+							validateTurn = false
+							onGoingContent	= "#{getWord smallWord} does not exist"
+			else 
+				validateTurn = false
+				onGoingContent	= "#{getWord mainWord} does not exist"
 		when "vertical"
 			mainWord = getVerticalWord(newLetters[0])
 			if checkValidity(getWord mainWord)
 				onGoingContent += "Vertical : #{countWord mainWord} <br>"	
 				for letter in newLetters
 					smallWord = getHorizontalWord(letter)
-					if smallWord != null and checkValidity(getWord smallWord)
-						onGoingContent += "Horizontal : #{countWord smallWord} <br>"	
-				copyMatrix(matrixTemp,matrix)
+					if smallWord != null
+						if checkValidity(getWord smallWord)
+							onGoingContent += "Horizontal : #{countWord smallWord} <br>"
+						else
+							validateTurn = false
+							onGoingContent	= "#{getWord smallWord} does not exist"	
+			else 
+				validateTurn = false
+				onGoingContent	= "#{getWord mainWord} does not exist"				
 		when "onlyOneLetter"
+			console.log "tutu"
 			hWord = getHorizontalWord(newLetters[0])
 			vWord = getVerticalWord(newLetters[0])
 			if hWord == null and vWord == null
-				onGoingContent = "This tile is alone !!!"	
+				onGoingContent = "This tile is alone !!!"
+				validateTurn = false	
 			else
-				if hWord != null and checkValidity(getWord hWord)
-					onGoingContent += "Horizontal : #{countWord hWord} <br>"
-				if vWord != null and checkValidity(getWord vWord)
-					onGoingContent += "Vertical : #{countWord vWord} <br>"	
-				copyMatrix(matrixTemp,matrix)
+				if hWord != null
+					if checkValidity(getWord hWord)
+						onGoingContent += "Horizontal : #{countWord hWord} <br>"
+					else
+						validateTurn = false	
+						onGoingContent	= "#{getWord hWord} does not exist"		
+				if vWord != null 
+					if checkValidity(getWord vWord)
+						onGoingContent += "Vertical : #{countWord vWord} <br>"	
+					else
+						validateTurn = false	
+						onGoingContent	= "#{getWord vWord} does not exist"		
 		when "unknown"
-			onGoingContent = "unknown, please replace your tiles"			
-	document.getElementById("onGoing").innerHTML=onGoingContent
-	freezeTilesOnMatrix()
+			validateTurn = false
+			onGoingContent = "please replace your tiles"			
+	endTurn(validateTurn,onGoingContent)
+
+endTurn = (validateTurn,onGoingContent) ->
+	if validateTurn
+		copyMatrix(matrixTemp,matrix)
+		document.getElementById("onGoing").innerHTML=onGoingContent
+		freezeTilesOnMatrix()
+	else
+		document.getElementById("onErrorPopin").innerHTML=onGoingContent
+		document.getElementById("modalCheck").checked="checked"
 
 #### Validates current turn by passing all tiles on a "readonly" mode
 freezeTilesOnMatrix = () ->
