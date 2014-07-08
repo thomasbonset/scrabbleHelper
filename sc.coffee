@@ -7,6 +7,8 @@
 # Table containing last letters placed. Will contain 'LetterinTheMatrix' objects
 @newLetters=[]
 
+@roots = (0 for [1..225])
+
 # Class representing a Scrabble tile and its place on the board 
 class LetterinTheMatrix
 	constructor: (@value, @i, @j) ->
@@ -110,60 +112,67 @@ copyMatrix = (matrixFrom, matrixTo) ->
 					matrixTemp[i][j] = jokerTile.value	
 	validateTurn = true
 	onGoingContent = ""
-	switch detectIfNewWordIsHorizontalOrVertical() 
-		when "horizontal"
-			mainWord = getHorizontalWord(newLetters[0])
-			if checkValidity(getWord mainWord)
-				onGoingContent += "Horizontal : #{countWord mainWord} <br>"
-				for letter in newLetters
-					smallWord = getVerticalWord(letter)
-					if smallWord != null
-						if checkValidity(getWord mainWord)
-							onGoingContent += "Vertical : #{countWord smallWord} <br>"
-						else
-							validateTurn = false
-							onGoingContent	= "#{getWord smallWord} does not exist"
-			else 
-				validateTurn = false
-				onGoingContent	= "#{getWord mainWord} does not exist"
-		when "vertical"
-			mainWord = getVerticalWord(newLetters[0])
-			if checkValidity(getWord mainWord)
-				onGoingContent += "Vertical : #{countWord mainWord} <br>"	
-				for letter in newLetters
-					smallWord = getHorizontalWord(letter)
-					if smallWord != null
-						if checkValidity(getWord smallWord)
-							onGoingContent += "Horizontal : #{countWord smallWord} <br>"
-						else
-							validateTurn = false
-							onGoingContent	= "#{getWord smallWord} does not exist"	
-			else 
-				validateTurn = false
-				onGoingContent	= "#{getWord mainWord} does not exist"				
-		when "onlyOneLetter"
-			console.log "tutu"
-			hWord = getHorizontalWord(newLetters[0])
-			vWord = getVerticalWord(newLetters[0])
-			if hWord == null and vWord == null
-				onGoingContent = "This tile is alone !!!"
-				validateTurn = false	
-			else
-				if hWord != null
-					if checkValidity(getWord hWord)
-						onGoingContent += "Horizontal : #{countWord hWord} <br>"
-					else
-						validateTurn = false	
-						onGoingContent	= "#{getWord hWord} does not exist"		
-				if vWord != null 
-					if checkValidity(getWord vWord)
-						onGoingContent += "Vertical : #{countWord vWord} <br>"	
-					else
-						validateTurn = false	
-						onGoingContent	= "#{getWord vWord} does not exist"		
-		when "unknown"
+	if matrixTemp[7][7] is -1
+		validateTurn = false
+		onGoingContent = "Center tile must be filled"
+	else
+		if countZones() > 1
 			validateTurn = false
-			onGoingContent = "please replace your tiles"			
+			onGoingContent = "There is an isolated word"
+		else	
+			switch detectIfNewWordIsHorizontalOrVertical() 
+				when "horizontal"
+					mainWord = getHorizontalWord(newLetters[0])
+					if checkValidity(getWord mainWord)
+						onGoingContent += "Horizontal : #{countWord mainWord} <br>"
+						for letter in newLetters
+							smallWord = getVerticalWord(letter)
+							if smallWord != null
+								if checkValidity(getWord mainWord)
+									onGoingContent += "Vertical : #{countWord smallWord} <br>"
+								else
+									validateTurn = false
+									onGoingContent	= "#{getWord smallWord} does not exist"
+					else 
+						validateTurn = false
+						onGoingContent	= "#{getWord mainWord} does not exist"
+				when "vertical"
+					mainWord = getVerticalWord(newLetters[0])
+					if checkValidity(getWord mainWord)
+						onGoingContent += "Vertical : #{countWord mainWord} <br>"	
+						for letter in newLetters
+							smallWord = getHorizontalWord(letter)
+							if smallWord != null
+								if checkValidity(getWord smallWord)
+									onGoingContent += "Horizontal : #{countWord smallWord} <br>"
+								else
+									validateTurn = false
+									onGoingContent	= "#{getWord smallWord} does not exist"	
+					else 
+						validateTurn = false
+						onGoingContent	= "#{getWord mainWord} does not exist"				
+				when "onlyOneLetter"
+					hWord = getHorizontalWord(newLetters[0])
+					vWord = getVerticalWord(newLetters[0])
+					if hWord == null and vWord == null
+						onGoingContent = "This tile is alone !!!"
+						validateTurn = false	
+					else
+						if hWord != null
+							if checkValidity(getWord hWord)
+								onGoingContent += "Horizontal : #{countWord hWord} <br>"
+							else
+								validateTurn = false	
+								onGoingContent	= "#{getWord hWord} does not exist"		
+						if vWord != null 
+							if checkValidity(getWord vWord)
+								onGoingContent += "Vertical : #{countWord vWord} <br>"	
+							else
+								validateTurn = false	
+								onGoingContent	= "#{getWord vWord} does not exist"		
+				when "unknown"
+					validateTurn = false
+					onGoingContent = "please replace your tiles"			
 	endTurn(validateTurn,onGoingContent)
 
 endTurn = (validateTurn,onGoingContent) ->
@@ -273,6 +282,43 @@ detectIfNewWordIsHorizontalOrVertical = () ->
 		return "vertical"
 	return "unknown"
 
+countZones = () ->
+	@roots = (0 for [1..225])
+	pos = 0
+	for j in [0..14] 
+		for i in [0..14]
+			pos++
+			if matrixTemp[i][j] isnt -1
+				root = -1
+				if (i>0) and matrixTemp[i-1][j] isnt -1 then root = union(find(pos-1), root)
+				if (j>0) and matrixTemp[i][j-1] isnt -1 then root = union(find(pos-15), root)
+				if root == -1 then roots[pos]=pos else roots[pos]=root
+	for index in [0..225]
+		roots[index] = find(index);
+	return _.size _.uniq _.compact roots
+	
+find = (pos) ->
+	while (roots[pos] != pos) 
+		pos=roots[pos]
+	return pos
+	
+union = (r1, r2) ->
+	if r1 == r2
+		return r1
+	if r1 == -1 
+		return r2
+	if r2 == -1 
+		return r1
+	if r1 < r2
+		roots[r2] = r1
+		return r1
+	else
+		roots[r1] = r2
+		return r2	
+
+
+	
+	
 #### Drag & drop functions. 
 # Helpful for moving tiles	
 @drag = (target, event) ->
