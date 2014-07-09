@@ -114,7 +114,7 @@ copyMatrix = (matrixFrom, matrixTo) ->
 	onGoingContent = ""
 	if matrixTemp[7][7] is -1
 		validateTurn = false
-		onGoingContent = "Center tile must be filled"
+		onGoingContent = i18n("error_center_tile","fr")
 	else
 		if countZones() > 1
 			validateTurn = false
@@ -175,6 +175,21 @@ copyMatrix = (matrixFrom, matrixTo) ->
 					onGoingContent = "please replace your tiles"			
 	endTurn(validateTurn,onGoingContent)
 
+
+i18n = (key, lang) ->
+	query = {
+    		"_id": {
+        		"$oid": "53bd45a3e4b0e86876ad127b"
+    		}
+		}	
+	dburl = "https://api.mongolab.com/api/1/databases/scrabbledictionnary/collections/dico1?q=" + JSON.stringify(query) + "&apiKey=V9D6fvKO2yJET9xi2bqLb798CCDTNc8G"
+	req = new XMLHttpRequest()
+	req.open('GET', dburl, false)
+	req.send(null)	
+	if req.status is 200 or req.status is 304 
+		result = JSON.parse(req.responseText)
+		return result[0].i18n[0][key][0][lang]
+	
 endTurn = (validateTurn,onGoingContent) ->
 	if validateTurn
 		copyMatrix(matrixTemp,matrix)
