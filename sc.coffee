@@ -128,7 +128,7 @@ copyMatrix = (matrixFrom, matrixTo) ->
 						for letter in newLetters
 							smallWord = getVerticalWord(letter)
 							if smallWord != null
-								if checkValidity(getWord mainWord)
+								if checkValidity(getWord smallWord)
 									onGoingContent += "Vertical : #{countWord smallWord} <br>"
 								else
 									validateTurn = false
