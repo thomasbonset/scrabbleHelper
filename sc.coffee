@@ -99,17 +99,17 @@ copyMatrix = (matrixFrom, matrixTo) ->
 	@newLetters = [] # reinitialize newLetters tab
 	for i in [0..14] # parse the board and detect new letters
 		for j in [0..14]
-			letterTile = document.querySelector("#coord-#{i}-#{j} > div > strong")
-			jokerTile = document.querySelector("#coord-#{i}-#{j} > div > input")
-			if letterTile != null 
-				if  matrixTemp[i][j] is -1
-					newLetters.push new LetterinTheMatrix(letterTile.innerHTML, i, j)
-					matrixTemp[i][j] = letterTile.innerHTML
-			if jokerTile != null 
-				if  matrixTemp[i][j] is -1
-					newLetters.push new LetterinTheMatrix(jokerTile.value, i, j)
-					matrixJokerMask[i][j] = true
-					matrixTemp[i][j] = jokerTile.value	
+				letterTile = document.querySelector("#coord-#{i}-#{j} > div > strong")
+				jokerTile = document.querySelector("#coord-#{i}-#{j} > div > input")
+				if letterTile != null 
+					if  matrixTemp[i][j] is -1
+						newLetters.push new LetterinTheMatrix(letterTile.innerHTML, i, j)
+						matrixTemp[i][j] = letterTile.innerHTML
+				if jokerTile != null 
+					if  matrixTemp[i][j] is -1
+						newLetters.push new LetterinTheMatrix(jokerTile.value, i, j)
+						matrixJokerMask[i][j] = true
+						matrixTemp[i][j] = jokerTile.value	
 	validateTurn = true
 	onGoingContent = ""
 	if matrixTemp[7][7] is -1

@@ -3,6 +3,12 @@
 * {
     margin: 0;
     padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 body {
@@ -10,6 +16,7 @@ body {
     color: #1F1F1F;
     padding: 0;
     text-align: center;
+    
 }
 
 
@@ -179,3 +186,56 @@ img.btn_close {
 	margin: -55px -55px 0 0;
 	cursor: pointer;
 }
+
+#volet {
+    float: right;
+    padding: 10px;
+    background: #6B9A49; color: #fff;	
+    position: fixed;
+    width: 300px;
+	height: 300px;
+    right: -300px; top: 0px;
+    -webkit-transition: all .5s ease-in;
+    transition: all .5s ease-in;
+}
+
+#volet a.ouvrir, #volet a.fermer {
+    padding: 10px 25px;
+    background: #555;
+    color: #fff;
+    text-decoration: none;
+ 	position: absolute;
+    right: 300px;
+    top: 150px;
+
+    /* quelques styles CSS3 */
+    -webkit-transform: rotate(90deg);
+    border-radius: 0 0 8px 8px;
+}
+
+
+#volet:target {
+    right: 0;
+}
+
+
+#volet_clos:target #volet {
+    right: -300px;
+}
+
+
+#volet a.fermer {
+    display: none;
+}
+
+#volet:target a.ouvrir {
+    display: none;
+}
+#volet:target a.fermer {
+    display: block;
+}
+
+#volet_clos {
+			position: fixed; 
+			top: 0; left: 0;
+		}

@@ -346,15 +346,24 @@
             <div class="green-pane" id="coord-14-13" ondragover="return false" ondrop="drop(this, event)"></div>
             <div class="red-pane" id="coord-14-14" ondragover="return false" ondrop="drop(this, event)"></div>
         </section>
-        <div id="side">
-            <input type="submit" Value="Fin du tour" onClick="compute()"><br>
+        <input type="submit" Value="Fin du tour" onClick="compute()"><br>
+        
+    <!--   <div id="side">
+            
             <p><strong>Informations</strong></p>
             <div id="onGoing"></div>  
         </div>      
+        -->   
+        <div id="volet_clos">
+    		<div id="volet">
+        		<p id="onGoing" ></p>
+        		<a href="#volet" class="ouvrir">Ouvrir !</a>
+        		<a href="#volet_clos" class="fermer">fermer !</a>
+   			</div>
+		</div>
         
-        
-<div>
-		<label class="button" for="modalCheck">Voir la fenêtre modale</label>
+	<div>
+		<label class="button" for="modalCheck"></label>
 		<input type="checkbox" id="modalCheck" />
 		<div class="modalLayer">
 			<div class="popup_block">
