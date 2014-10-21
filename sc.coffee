@@ -119,6 +119,9 @@ copyMatrix = (matrixFrom, matrixTo) ->
 		if countZones() > 1
 			validateTurn = false
 			onGoingContent = "There is an isolated word"
+		else if isMoreThanOneTileBySquare() 
+			validateTurn = false
+			onGoingContent = "Only ont letter by tile"
 		else	
 			switch detectIfNewWordIsHorizontalOrVertical() 
 				when "horizontal"
@@ -311,6 +314,13 @@ countZones = () ->
 	for index in [0..225]
 		roots[index] = find(index);
 	return _.size _.uniq _.compact roots
+	
+isMoreThanOneTileBySquare = () ->
+	for j in [0..14] 
+		for i in [0..14]
+			if document.querySelectorAll("#coord-#{i}-#{j} > div").length > 1 
+				return true
+	return false		
 	
 find = (pos) ->
 	while (roots[pos] != pos) 
